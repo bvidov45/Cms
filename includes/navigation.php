@@ -22,9 +22,13 @@
                        <li>
                         <a href="#"><?php echo $row['cat_title'];  ?></a>
                        </li>
+                       
                     
                     
                     <?php } ?>
+                       <li>
+                        <a href="admin/">Admin</a>
+                       </li>
                  </ul>
             </div>
             <!-- /.navbar-collapse -->
