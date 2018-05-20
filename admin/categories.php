@@ -22,27 +22,8 @@
                         </h1>
                         
                         <div class="col-xs-6">
-                            <?php
-                            if(isset($_POST['submit'])){
-                                $cat_title = $_POST['cat_title'];
-                                
-                             $query = "INSERT INTO categories (cat_title)VALUES ('$cat_title')";
-                             
-                             if(empty($cat_title)){
-                                 echo "This field cannot be empty";
-                             }else{
-                                 $result = mysqli_query($conn, $query);
-                                 if(!$result){
-                                     die("Query Failed" . mysqli_error($conn));
-                                 }
-                             }
                             
-                            }
-                            
-                            
-                            
-                            
-                            ?>
+                      <?php insert_categories();?>
                             
                             
                             
@@ -56,7 +37,7 @@
                                 </div>
                             </form>
                             
-                            <?php
+                            <?php 
                             if(isset($_GET['edit'])){
                                 $edit = $_GET['edit'];
                                 include 'includes/update_categories.php';
@@ -94,12 +75,7 @@
                                     </tr>
                                     <?php   } ?>
                                     <?php //Delete categories query
-                                    if(isset($_GET['delete'])){
-                                    $delete = $_GET{'delete'};
-                                    $sql = "DELETE FROM categories WHERE id = '$delete'";
-                                    $del_query = mysqli_query($conn, $sql);
-                                    header("Location: categories.php");
-                                    }
+                                    delete_categories();
                                     ?>
                                 </tbody>
                             </table> 
