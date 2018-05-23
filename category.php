@@ -12,33 +12,29 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 
-                
+                <h1 class="page-header">
+                    Page Heading
+                    <small>Secondary Text</small>
+                </h1>
                
                 
-                <?php 
-                    
+                <?php  
+                   if(isset($_GET['category'])){
+                       $category = $_GET['category'];
+                   }
                 
-                    $sql = "SELECT * FROM posts  ";
+                
+                
+                    $sql = "SELECT * FROM posts WHERE post_category_id = $category";
                     $res = mysqli_query($conn, $sql);
-                   
                     while ($row = mysqli_fetch_assoc($res)){
                      $post_id = $row['post_id'];
                      $post_title = $row['post_title'];
                      $post_author = $row['post_author'];
                      $post_date = $row['post_date'];
-                     $post_content = substr($row['post_content'], 0, 100);
-                     $post_image = $row['post_image'];
-                     
-                     
-                     
-                     
-                     
-                     
-                     ?>
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>   
+                      $post_content = substr($row['post_content'], 0, 100);
+                     $post_image = $row['post_image']; ?>
+                    
                
 
                 <!-- First Blog Post -->
@@ -55,9 +51,9 @@
                 <p><?php echo $post_content;  ?></p>
                 <a class="btn btn-primary" href="post.php?pid=<?php echo $post_id;   ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                      
+                <?php } ?>    
                 <hr>
-                    <?php }  ?>  
+
          
             </div>
 
